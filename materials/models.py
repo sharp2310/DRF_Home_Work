@@ -91,8 +91,3 @@ class Subscription(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.course}"
-        verbose_name = "Урок"
-        verbose_name_plural = "Уроки"
-
-    def __str__(self):
-        return self.title
