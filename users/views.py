@@ -1,5 +1,3 @@
-import os
-
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
@@ -12,7 +10,6 @@ import stripe
 from django_filters.rest_framework import DjangoFilterBackend
 
 from config.settings import STRIPE_SECRET_KEY
-from materials.models import Course
 from users.models import User, Payments
 from users.serializers import UserSerializer, PaymentSerializer, UserProfileSerializer
 from users.services import create_stripe_price, create_stripe_session
