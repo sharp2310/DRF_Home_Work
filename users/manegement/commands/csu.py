@@ -3,13 +3,15 @@ from users.models import User
 
 
 class Command(BaseCommand):
-    """Создание superuser"""
+    """Команда создания нового пользователя."""
 
     def handle(self, *args, **options):
-        user = User.objects.create(email="admin2@sky.pro")
-        user.is_staff = True
-        user.is_active = True
-        user.is_superuser = True
-        user.set_password("spanky290195")
-        user.save()
-        print("Суперпользователь создан успешно!")
+        user_email = input("Введите email пользователя: ")
+        if User.objects.filter(email=user_email).exists():
+            print("Пользователь с таким email уже существует.")
+        else:
+            user = User.objects.create(email=user_email)
+            user.is_active = True
+            user.set_password("spanky290195")
+            user.save()
+            print(f"Пользователь {user_email} успешно создан.")
